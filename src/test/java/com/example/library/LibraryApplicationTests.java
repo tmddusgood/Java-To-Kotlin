@@ -1,10 +1,10 @@
-package com.example.teampandanback;
+package com.example.library;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TeamPandaNBackApplicationTests {
+class LibraryApplicationTests {
 
     @Test
     void contextLoads() {
