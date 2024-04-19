@@ -50,11 +50,9 @@ class RedisConfig(
 
         val cacheConfigurations = mapOf(
             "currentAir" to RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofSeconds(CURRENT_AIR_EXPIRE_SECONDS))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(GenericJackson2JsonRedisSerializer())),
+                .entryTtl(Duration.ofSeconds(CURRENT_AIR_EXPIRE_SECONDS)),
             "ApiAccessInfo" to RedisCacheConfiguration.defaultCacheConfig()
                 .entryTtl(Duration.ofSeconds(API_ACCESS_INFO_EXPIRE_SECONDS))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(GenericJackson2JsonRedisSerializer()))
         )
 
         return RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory(connectionFactory)
