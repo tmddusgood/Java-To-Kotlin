@@ -14,10 +14,8 @@ enum class AirEnum(
 
     companion object {
         private fun getEnumForCriteria(value: Int, criteriaSelector: (AirEnum) -> Int): AirEnum {
-            for (v in values()) {
-                if (value < criteriaSelector(v)) return v
-            }
-            throw IllegalArgumentException("Value $value 는 AirEnum 에 없는 값입니다.")
+            return values().firstOrNull { value < criteriaSelector(it) }
+                ?: throw IllegalArgumentException("Value $value 는 AirEnum 에 없는 값입니다.")
         }
 
         fun getEnumForFineDust(value: Int): AirEnum {
