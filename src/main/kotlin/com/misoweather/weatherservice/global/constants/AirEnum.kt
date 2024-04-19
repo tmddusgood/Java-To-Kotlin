@@ -13,18 +13,19 @@ enum class AirEnum(
     VERYVBAD("\uD83D\uDE21", 99999, 99999, "매우나쁨");
 
     companion object {
-        fun getEnumForFineDust(value: Int): AirEnum {
+        private fun getEnumForCriteria(value: Int, criteriaSelector: (AirEnum) -> Int): AirEnum {
             for (v in values()) {
-                if (value < v.findDustCriteria) return v
+                if (value < criteriaSelector(v)) return v
             }
-            throw IllegalArgumentException()
+            throw IllegalArgumentException("Value $value 는 AirEnum 에 없는 값입니다.")
+        }
+
+        fun getEnumForFineDust(value: Int): AirEnum {
+            return getEnumForCriteria(value) { it.findDustCriteria }
         }
 
         fun getEnumForUltraDust(value: Int): AirEnum {
-            for (v in values()) {
-                if (value < v.ultraFineDustCriteria) return v
-            }
-            throw IllegalArgumentException()
+            return getEnumForCriteria(value) { it.ultraFineDustCriteria }
         }
     }
 }
