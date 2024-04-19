@@ -1,5 +1,7 @@
-package com.misoweather.weatherservice.kafka
+package com.misoweather.weatherservice.config
 
+import com.misoweather.weatherservice.kafka.KafkaProperty
+import com.misoweather.weatherservice.kafka.MemberEvent
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.springframework.context.annotation.Bean
